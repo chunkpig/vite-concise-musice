@@ -18,6 +18,8 @@ document.addEventListener(
 )
 watchEffect(() => {
   // 如果你确定to.meta.title的类型是string，那就用类型断言
-  document.title = route.meta.title as string
+  if (route.meta.title) {
+    document.title = route.meta.title as string
+  }
 })
 </script>

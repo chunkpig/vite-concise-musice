@@ -55,7 +55,7 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   border-radius: 8px;
-  background: #345;
+  background: rgba(0, 0, 0, 0.1);
   transition: all 0.1s;
   overflow: hidden;
   cursor: pointer;

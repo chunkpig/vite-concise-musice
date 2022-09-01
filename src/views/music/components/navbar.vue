@@ -1,14 +1,7 @@
 <template>
   <div class="navbar w_100 h_100 p_l_x_10 p_r_x_10 flex align-center justify-end">
-    <!-- <div class="nav-search flex align-center overflow-hidden" :style="inputShow ? 'width:20%' : ''">
-      <div @click="searchfocus" class="search-box flex align-center justify-center cursor-pointer">
-        <el-icon :size="18"><i-ep-search /></el-icon>
-      </div>
-      <nav-search class="nav-select" />
-    </div> -->
     <div v-if="userinfo" class="w_8 head-sculpture flex cursor-pointer c_fff">
       <el-popover :visible="state.usevisible" placement="bottom" :width="180" trigger="click">
-        <!-- <p class="text-center"></p> -->
         <el-button class="w_100" @click="logout">退出登录</el-button>
         <template #reference>
           <div class="flex w_100 align-center" @click="state.usevisible = !state.usevisible">
@@ -36,6 +29,9 @@ import { useUserStore } from '@/store/user.ts'
 import { LoginOutStore } from '@/store/login.ts'
 import { searchStore } from '@/store/search.ts'
 import NavSearch from './search.vue'
+const prop = defineProps({
+  modelValue: String
+})
 const state = reactive({
   usevisible: false //
 })

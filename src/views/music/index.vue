@@ -47,7 +47,7 @@
       <lyric-box />
     </div>
   </div>
-  <div class="absolute b_0 w_100 h_x_60">
+  <div class="absolute b_0 w_92 h_x_60 l_50 translateX50">
     <play-music />
   </div>
 </template>
@@ -111,14 +111,11 @@ const lyric = computed(() => {
 const Tagclick = (e: any, index: number) => {
   router.push({ path: `/music/${e.value}`, query: { id: userId.value } })
   state.active = index
-  // getsearchStore.songbg = state.locabg
 }
 
 onMounted(() => {
   if (route.meta.active) {
     state.active = route.meta.active as number
-  } else {
-    // state.active = route.meta.active as number
   }
 })
 </script>

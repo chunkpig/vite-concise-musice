@@ -1,12 +1,13 @@
 import { defineStore } from 'pinia'
 import { getCookies, setCookies, removeCookies } from '@/utils/cookies.ts'
+import { inspect } from '@/utils/inspect.ts'
 import { poststatus, logout } from '@/api/login.ts'
 export const useUserStore = defineStore({
   id: 'user', // id必填，且需要唯一
   state: () => {
     return {
-      userinfo: getCookies('userinfo') || null,
-      cookiekey: getCookies('cookiekey') || ''
+      userinfo: inspect('userinfo'),
+      cookiekey: inspect('cookiekey')
     }
   },
   actions: {

@@ -1,4 +1,5 @@
 <template>
+  <!-- <div class="wavesurfer-box " ref=""></div> -->
   <div class="play c_fff">
     <div class="music-cover flex" v-if="songinfo">
       <img :src="songinfo.al.picUrl" class="border-radius4" />
@@ -263,9 +264,7 @@ watch(
     }, 1000)
   }
 )
-onMounted(() => {
-  // state.progressWidth = aplayer.value.offsetWidth
-})
+onMounted(() => {})
 </script>
 
 <style lang="scss" scoped>
@@ -311,7 +310,7 @@ onMounted(() => {
     height: 5px;
     transform: translateY(-50%);
     border-radius: 8px;
-    background: #345;
+    background: rgba(0, 0, 0, 0.5);
     transition: all 0.1s;
   }
   .up {
@@ -327,12 +326,20 @@ onMounted(() => {
   width: 100%;
   height: 5px;
   border-radius: 8px;
-  background: #345;
+  background: rgba(0, 0, 0, 0.3);
   transition: all 0.1s;
   cursor: pointer;
 }
 .Playlist:hover {
   color: #67c23a;
+}
+.wavesurfer-box {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  outline: 1px solid red;
 }
 </style>
 <style lang="scss">

@@ -19,7 +19,7 @@ export function getCookies(key: string) {
  */
 
 export function setCookies(name: string, value: any) {
-  return Cookies.set(name, value, { expires: 1 })
+  return Cookies.set(name, value, { expires: 7 })
 }
 
 /**
