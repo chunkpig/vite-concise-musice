@@ -1,11 +1,13 @@
 import request from './request'
-let axios = {}
+import { ElMessageBox } from 'element-plus'
+
+let axios: object | any = {}
 /**
  * get方法，对应get请求
  * @param {String} url [请求的url地址]
  * @param {Object} params [请求时携带的参数]
  */
-axios.get = function (url, params = null) {
+axios.get = function (url: any, params: any | null = null) {
   return new Promise((resolve, reject) => {
     request
       .get(url, {
@@ -26,7 +28,7 @@ axios.get = function (url, params = null) {
  * @param {Object} params [请求时携带的参数]
  */
 
-axios.post = function (url, params) {
+axios.post = function (url: any, params: any | null = null) {
   return new Promise((resolve, reject) => {
     request
       .post(url, params)
@@ -46,7 +48,7 @@ axios.post = function (url, params) {
  * @returns
  */
 
-axios.put = function (url, params) {
+axios.put = function (url: any, params: any | null = null) {
   return new Promise((resolve, reject) => {
     request
       .put(url, params)
@@ -65,7 +67,7 @@ axios.put = function (url, params) {
  * @returns
  */
 
-axios.delete = function (url, params) {
+axios.delete = function (url: any, params: any | null = null) {
   return new Promise((resolve, reject) => {
     request
       .delete(url, params)
@@ -77,7 +79,7 @@ axios.delete = function (url, params) {
       })
   })
 }
-axios.download = function (url, params) {
+axios.download = function (url: any, params: any | null = null) {
   return new Promise((resolve, reject) => {
     request({
       method: 'get',

@@ -1,12 +1,12 @@
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
   height: 10px;
 }
 
 /*外层轨道。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果*/
 ::-webkit-scrollbar-track {
   width: 1px;
-  // background-color: #eee;
+  background-color: rgba(0, 0, 0, 0.3);
   -webkit-border-radius: 2em;
   -moz-border-radius: 2em;
   border-radius: 2em;
@@ -17,7 +17,7 @@
 ::-webkit-scrollbar-thumb {
   position: relative;
   z-index: 2;
-  background-color: #cccccc;
+  background-color: rgba(142, 145, 149, 0.5);
   background-clip: padding-box;
   min-height: 28px;
   -webkit-border-radius: 2em;

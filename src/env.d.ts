@@ -13,3 +13,5 @@ declare module '*.vue' {
   export default component
 }
 // declare module '@types/three'
+declare module '*.ts'
+declare module 'js-cookie'

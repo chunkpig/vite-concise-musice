@@ -1,28 +1,63 @@
-import { defineConfig, UserConfig } from 'vite' // 帮手函数，这样不用 jsdoc 注解也可以获取类型提示
+import path from 'path'
+import { defineConfig } from 'vite' // 帮手函数，这样不用 jsdoc 注解也可以获取类型提示
 import vue from '@vitejs/plugin-vue'
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-const { resolve } = require('path')
+
 //这个配置 为了在html中使用 环境变量
-// const pathResolve = dir => resolve(__dirname, '.', dir)
+const pathSrc = path.resolve(__dirname, 'src')
 export default defineConfig({
   plugins: [
     //配置需要使用的插件列表
     vue(),
     AutoImport({
-      resolvers: [ElementPlusResolver()]
+      // Auto import functions from Vue, e.g. ref, reactive, toRef...
+      // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
+      imports: ['vue'],
+      // Auto import functions from Element Plus, e.g. ElMessage, ElMessageBox... (with style)
+      // 自动导入 Element Plus 相关函数，如：ElMessage, ElMessageBox... (带样式)
+      resolvers: [
+        ElementPlusResolver(),
+        // Auto import icon components
+        // 自动导入图标组件
+        IconsResolver({
+          prefix: 'Icon'
+        })
+      ],
+      dts: path.resolve(pathSrc, 'auto-imports.d.ts')
     }),
     Components({
       resolvers: [
+        // Auto register icon components
+        // 自动注册图标组件
+        IconsResolver({
+          enabledCollections: ['ep']
+        }),
         ElementPlusResolver({
           importStyle: 'sass'
         })
-      ]
+      ],
+      dts: path.resolve(pathSrc, 'components.d.ts')
+    }),
+    Icons({
+      autoInstall: true
     })
   ],
+  css: {
+    // css预处理器
+    preprocessorOptions: {
+      scss: {
+        // 引入 var.scss 这样就可以在全局中使用 var.scss中预定义的变量了
+        // 给导入的路径最后加上 ;
+        // additionalData: '@import "./src/styles/variable.scss";'
+      }
+    }
+  },
   //静态资源服务的文件夹
-  publicDir: 'public',
+  publicDir: process.env.NODE_ENV === 'production' ? 'vite-concise-musice' : 'public',
   base: './',
   //静态资源处理
   assetsInclude: '',
@@ -31,7 +66,7 @@ export default defineConfig({
   resolve: {
     alias: [
       //配置别名
-      { find: '@', replacement: resolve(__dirname, 'src') }
+      { find: '@', replacement: pathSrc }
     ],
     // 情景导出 package.json 配置中的exports字段
     conditions: [],
@@ -44,8 +79,8 @@ export default defineConfig({
     port: 8988, //项目端口
     proxy: {
       '/api': {
-        target: 'https://music-api-coral-seven.vercel.app',
-        // target: 'http://localhost:7001',
+        // target: 'https://music-api-coral-seven.vercel.app',
+        target: 'http://localhost:3000',
         changeOrigin: true,
         rewrite: path => path.replace(/^\/api/, '')
       }

@@ -24,3 +24,10 @@ export function gethot(params: any) {
 export function geplaylist(params: any) {
   return axios.get('/top/playlist', params)
 }
+/**
+ * 我的歌单
+ *
+ * */
+export function getuserplaylist(params: any) {
+  return axios.get('/user/playlist', params)
+}

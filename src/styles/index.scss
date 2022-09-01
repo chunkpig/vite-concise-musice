@@ -1,4 +1,6 @@
 @import './sidebar.scss';
+@import './transition.scss';
+@import './variable.scss';
 body {
   height: 100%;
   margin: 0;
@@ -17,48 +19,39 @@ html {
 
 #app {
   height: 100%;
+  -webkit-user-select: text;
+  -webkit-touch-callout: none;
+  /*系统默认菜单被禁用*/
+  -webkit-user-select: none;
+  /*webkit浏览器*/
+  -khtml-user-select: none;
+  /*早期浏览器*/
+  -moz-user-select: none;
+  /*火狐*/
+  -ms-user-select: none;
+  /*IE10*/
+  user-select: none;
 }
 
 p {
   margin: 0;
   padding: 0;
 }
-.height {
-  height: 100%;
+h4 {
+  margin: 0;
+  padding: 0;
 }
-.height1000px {
-  height: 1000px;
-}
-.height100px {
-  height: 15.5rem;
-}
-.width {
-  width: 100%;
-}
-.width60 {
-  width: 60%;
-}
-.width80 {
-  width: 80%;
-}
+
 .relative {
   position: relative;
 }
 .absolute {
   position: absolute;
 }
-.top {
-  top: 0;
+.fixed {
+  position: fixed;
 }
-.left {
-  left: 0;
-}
-.bottom {
-  bottom: 0;
-}
-.right {
-  right: 0;
-}
+
 .flex {
   display: flex;
 }
@@ -86,7 +79,9 @@ p {
 .flex-wrap {
   flex-wrap: wrap;
 }
-
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
 .align-start {
   align-items: flex-start;
 }
@@ -102,7 +97,9 @@ p {
 .align-center {
   align-items: center;
 }
-
+.align-content-start {
+  align-content: flex-start;
+}
 .justify-start {
   justify-content: flex-start;
 }
@@ -122,20 +119,12 @@ p {
 .justify-around {
   justify-content: space-around;
 }
-.margin-auto {
-  margin: auto;
-}
-.margin-top20px {
-  margin-top: 20px;
-}
-.margin-top6 {
-  margin-top: 6%;
-}
-.margin-bottom50px {
-  margin-bottom: 50px;
-}
+
 .border-radius4 {
   border-radius: 4px;
+}
+.border-radius100 {
+  border-radius: 100%;
 }
 .box-sizing {
   box-sizing: border-box;
@@ -161,11 +150,23 @@ p {
 .background-size {
   background-size: cover;
 }
+.translate50 {
+  transform: translate(-50%, -50%);
+}
+.translateY50 {
+  transform: translateY(-50%);
+}
+.translateX50 {
+  transform: translateX(-50%);
+}
 .opacity {
   opacity: 0.5;
 }
 .overflow-hidden {
   overflow: hidden;
+}
+.overflowY {
+  overflow-y: auto;
 }
 .ellipsis {
   overflow: hidden;
@@ -173,4 +174,22 @@ p {
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
+}
+.ellipsis_7 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+}
+.nowrap {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.text-gray {
+  color: #67c23a;
+}
+.b-b {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }

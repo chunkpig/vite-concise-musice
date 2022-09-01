@@ -1,0 +1,102 @@
+// 百分比
+$directions: (
+  'w': width,
+  'h': height,
+  'm_a': margin,
+  'm_l': margin-left,
+  'm_t': margin-top,
+  'm_r': margin-right,
+  'm_b': margin-bottom,
+  'p_l': padding-left,
+  'p_t': padding-top,
+  'p_r': padding-right,
+  'p_b': padding-bottom,
+  'l': left,
+  't': top,
+  'r': right,
+  'b': bottom,
+  'br': border-radius
+);
+@each $dir in $directions {
+  @if (#{nth($dir, 1)}== 'm_a') {
+    .#{nth($dir,1)} {
+      #{nth($dir,2)}: auto;
+    }
+  } @else {
+    @for $i from 0 through 100 {
+      $size: $i;
+      .#{nth($dir,1)}_#{$size} {
+        #{nth($dir,2)}: #{$size}#{'%'};
+      }
+    }
+  }
+}
+//宽高px
+$unit_px: (
+  'w_x': width,
+  'h_x': height,
+  'm_l_x': margin-left,
+  'm_t_x': margin-top,
+  'm_r_x': margin-right,
+  'm_b_x': margin-bottom,
+  'p_l_x': padding-left,
+  'p_t_x': padding-top,
+  'p_r_x': padding-right,
+  'p_b_x': padding-bottom,
+  'l_x': left,
+  't_x': top,
+  'r_x': right,
+  'b_x': bottom,
+  'br_x': border-radius,
+  'f_s_x': font-size
+);
+@each $var in $unit_px {
+  @for $i from 0 through 1000 {
+    $size: $i;
+    .#{nth($var,1)}_#{$size} {
+      #{nth($var,2)}: #{$size}#{'px'};
+    }
+  }
+}
+$heightcalc: (
+  'h_c': height,
+  'w_c': width
+);
+
+@each $var in $heightcalc {
+  @for $i from 0 through 1000 {
+    $size: $i;
+    .#{nth($var,1)}_#{$size} {
+      #{nth($var,2)}: calc(100% - #{$size}#{'px'});
+    }
+  }
+}
+//字体颜色
+$colors: (
+  'fff': #fff,
+  '345': #345,
+  '909AA4': #909aa4,
+  'c5c9cd': #c5c9cd
+);
+@each $var in $colors {
+  .c_#{nth($var,1)} {
+    color: #{nth($var, 2)};
+  }
+}
+
+//文字省略
+$ellipsis: (
+  'ellipsis': ''
+);
+@each $var in $ellipsis {
+  @for $i from 1 through 1000 {
+    $size: $i;
+    .#{nth($var,1)}_#{$size} {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: $i;
+      -webkit-box-orient: vertical;
+    }
+  }
+}
