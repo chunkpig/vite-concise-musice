@@ -92,7 +92,7 @@ const route = useRoute()
 const status = useUserStore()
 const getsearchStore = searchStore()
 const userId = computed(() => {
-  return status.userinfo.userId
+  if (status.userinfo) return status.userinfo.userId
 })
 //背景图
 const cssbg = computed(() => {

@@ -19,7 +19,7 @@ const dailylist = computed(() => {
 const status = useUserStore()
 //用户信息
 const userinfo = computed(() => {
-  if (dailylist.value.length == 0) {
+  if (status.userinfo && dailylist.value.length == 0) {
     dailyStore.updaterecommend()
   }
   return status.userinfo

@@ -7,7 +7,8 @@ export const useUserStore = defineStore({
   state: () => {
     return {
       userinfo: inspect('userinfo'),
-      cookiekey: inspect('cookiekey')
+      cookiekey: getCookies('cookiekey')
+      // inspect('cookiekey')
     }
   },
   actions: {

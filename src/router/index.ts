@@ -15,6 +15,16 @@ const routes = [
 
     children: [
       {
+        path: '/music/search',
+        name: 'search',
+        meta: {
+          title: '搜索',
+          active: 0,
+          keepAlive: false
+        },
+        component: () => import('@/views/search/index.vue')
+      },
+      {
         path: '/music/song',
         name: 'Song',
         meta: {

@@ -46,45 +46,6 @@ service.interceptors.response.use(
         message: error.response.data.message,
         type: 'warning'
       })
-      // switch (error.response.status) {
-      //   case 400:
-      //     ElMessage({
-      //       message: error.response.data.message,
-      //       type: 'error'
-      //     })
-      //     break
-      //   case 401:
-      //     ElMessage({
-      //       message: error.response.data.message,
-      //       type: 'error'
-      //     })
-      //     break
-      //   case 404:
-      //     ElMessage({
-      //       message: '很抱歉，资源未找到!',
-      //       type: 'error'
-      //     })
-      //     break
-      //   case 500:
-      //     ElMessage({
-      //       message: '网络错误，请稍后再试!',
-      //       type: 'error'
-      //     })
-      //     break
-      //   case 503:
-      //     ElMessage({
-      //       message: '系统错误，请稍后再试!',
-      //       type: 'error'
-      //     })
-      //     break
-      //   case 504:
-      //     ElMessage({
-      //       message: '网络超时，请稍后再试!',
-      //       type: 'error'
-      //     })
-      //     break
-      // }
-
       return Promise.reject(error)
     }
   }
