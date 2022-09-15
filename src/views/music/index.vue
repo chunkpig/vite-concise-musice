@@ -114,7 +114,7 @@ const Tagclick = (e: any, index: number) => {
 }
 
 onMounted(() => {
-  if (route.meta.active) {
+  if (route.meta.active || route.meta.active === 0) {
     state.active = route.meta.active as number
   }
 })

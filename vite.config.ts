@@ -80,8 +80,8 @@ export default defineConfig({
     proxy: {
       '/api': {
         // target: 'https://music-api-coral-seven.vercel.app',
-        // target: 'http://localhost:3000',
-        target: 'https://autumnfish.cn',
+        target: 'http://localhost:3000',
+        // target: 'https://autumnfish.cn',
         changeOrigin: true,
         rewrite: path => path.replace(/^\/api/, '')
       }

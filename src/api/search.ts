@@ -10,12 +10,12 @@ export function getsearchdefault(params: any) {
 }
 
 /**
- * 热搜列表(简略)
+ * 热搜列表(详细)
  *
  * */
 
 export function getsearchhot(params: any) {
-  return axios.get('/search/hot', params)
+  return axios.get('/search/hot/detail', params)
 }
 
 /**
@@ -72,3 +72,13 @@ export function getcheckmusic(params: any) {
 export function getlyric(params: any) {
   return axios.get('/lyric', params)
 }
+
+/**
+ * 新歌速递
+ */
+export function gettopsong(params: any) {
+  return axios.get('/top/song', params)
+}
+/**
+ * 热门歌手
+ */

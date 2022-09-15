@@ -76,7 +76,8 @@ $colors: (
   'fff': #fff,
   '345': #345,
   '909AA4': #909aa4,
-  'c5c9cd': #c5c9cd
+  'c5c9cd': #c5c9cd,
+  'F56C6C': #f56c6c
 );
 @each $var in $colors {
   .c_#{nth($var,1)} {

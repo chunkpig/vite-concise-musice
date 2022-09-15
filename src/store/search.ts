@@ -9,7 +9,6 @@ export const searchStore = defineStore({
   id: 'search', // id必填，且需要唯一
   state: () => {
     return {
-      selectShow: false,
       options: [], //搜索关键词列表
       singlelist: [], //单曲列表
       skip_state: true,
@@ -25,21 +24,11 @@ export const searchStore = defineStore({
     }
   },
   actions: {
-    //
-    updatestate(value: object) {
-      this.selectShow = !this.selectShow
-      if (this.selectShow) {
-        this.updateHot()
-      }
-    },
     // 热搜简略
     updateHot() {
       getsearchhot().then((res: any) => {
         if (res.code === 200) {
-          res.result.hots.forEach((element: object | any) => {
-            element.name = element.first
-          })
-          this.options = res.result.hots
+          this.options = res.data
         }
       })
     },
@@ -48,17 +37,7 @@ export const searchStore = defineStore({
       getcloudsearch(vl).then(async (res: any) => {
         if (res.code === 200) {
           let songs = res.result.songs
-          let list = await songs.map((item: any) => item.id).toString()
-          this.updategetSongUrl(list).then((vl: any) => {
-            songs.forEach((item: any) => {
-              vl.forEach((vl: any) => {
-                if (item.id == vl.id) {
-                  item.url = vl
-                }
-              })
-            })
-            this.singlelist = songs
-          })
+          this.singlelist = songs
           this.songCount = res.result.songCount
         }
       })
@@ -95,8 +74,6 @@ export const searchStore = defineStore({
           let data: any = res.data[0]
           obj.url = data
           this.songurl = obj
-          // console.log(this.songurl)
-          // return data
         }
       })
     },
